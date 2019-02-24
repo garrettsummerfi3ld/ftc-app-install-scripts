@@ -32,7 +32,7 @@ TITLE="Ubuntu Post-Install Script"
 function main {
 	echo_message header "Starting 'main' function"
 	# Draw window
-	MAIN=$(eval `resize` && whiptail \
+	MAIN=$(whiptail \
 		--notags \
 		--title "$TITLE" \
 		--menu "\nWhat would you like to do?" \
