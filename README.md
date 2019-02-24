@@ -1,4 +1,4 @@
-Ubuntu Post Install Scripts
+First Tech Challenge Install Scripts
 ===========================
 
 A semi-automatic and interactive set of post-installation scripts for Ubuntu and its derivatives. You can use this project to install your favourite apps, set your preferred settings, and do minor housekeeping.
@@ -28,3 +28,5 @@ You use these scripts, you can just run the main script from the root of the sou
 Alternatively, if you use `bash` and cloned this to your home folder, add the following to your `.bashrc` to run this script on-demand.
 
     export PATH=${PATH}:~/ubuntu-post-install/
+
+## Forked from snwh and his repo https://github.com/snwh/ubuntu-post-install
