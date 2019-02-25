@@ -4,8 +4,11 @@
 # Authors:
 #   Sam Hewitt <sam@snwh.org>
 #
+# Forked by:
+#   Garrett Summerfield <garrettsummerfi3ld@gmail.com>
+#
 # Description:
-#   A post-installation bash script for Ubuntu
+#   A installation bash script for installing FTC SDK and other development tools
 #
 # Legal Preamble:
 #
@@ -26,7 +29,7 @@ tabs 4
 clear
 
 # Title of script set
-TITLE="Ubuntu Post-Install Script"
+TITLE="FTC Linux Install Script"
 
 # Main
 function main {
