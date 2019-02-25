@@ -28,6 +28,6 @@ function echo_message(){
 	fi
 	tput bold;
 	tput setaf $color;
-	echo "`date +"%T"`" '$message';
+	echo "`date +"%T"` $message";
 	tput sgr0;
 }
