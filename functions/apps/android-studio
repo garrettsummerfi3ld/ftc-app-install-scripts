@@ -1,3 +1,56 @@
 #!/bin/bash
 
-echo_message info Comming soon...
+# Install Android Studio from zip file
+function install_android_studio {
+	NAME="Android Studio"
+	ZIPFILE=android-studio-ide-182.5264788-linux
+	CHECKSUM=82603100f772baf5b6b54532375ada756b4b2dc11854cabae267cd8bd8c4f039
+	
+	# Start
+	echo_message header 'Begin '$NAME' installation...'
+	
+	# Download
+	echo_message info 'Downloading zip file '$ZIPFILE'...'
+	curl -O https://dl.google.com/dl/android/studio/ide-zips/3.3.1.0/${ZIPFILE}.zip
+	
+	# Verify download via sha256sum
+	echo_message info 'Verifying download using SHA-256...'
+	sha256sum ${ZIPFILE}.zip | grep $CHECKSUM &> /dev/null
+	EXITSTATUS=$?
+	
+	# Handling of verification
+	# Checksum failure
+	if [ $EXITSTATUS = 1]; then
+		echo_message error 'Error: checksums do not match. Aborting...'
+		whiptail --title "Error" --msgbox "Verification of $NAME download failed." 8 56
+		rm ${ZIPFILE}.zip
+		thirdparty
+	# Checksum success
+	else
+		# If checksum succeeds
+		echo_message success "Checksums look good. Proceeding..."
+		
+		# Unpack zipfile
+		echo_message info 'Unpacking '$NAME' archive...'
+		unzip $ZIPFILE*.zip
+		
+		# Moving package to /opt/ folder
+		echo_message info 'Moving package to /opt/ folder...'
+		superuser_do "mv android-studio /opt/"
+		cd /opt/android-studio/bin
+		
+		# Installation of required dependencies
+		echo_message info "Installing dependencies for Android Studio..."
+		install_from_list "Android Studio Dependencies" "android-studio-dependencies" main
+
+		# Run install script
+		echo_message info 'Running install script...'
+		echo_message warning 'This will require user input!'
+		nohup ./studio.sh &
+
+		# Cleanup and finish
+		echo_message success "Installation of '$ZIPFILE' complete."
+		whiptail --title "Finished" --msgbox "Installation of $NAME complete." 8 56
+		thirdparty
+		fi
+}
