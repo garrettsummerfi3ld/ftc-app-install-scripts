@@ -33,7 +33,7 @@ TITLE="FTC Linux Install Script"
 
 # Main
 function main {
-	echo_message header "Starting 'main' function..."
+	echo_message header "Starting 'main' function"
 	# Draw window
 	MAIN=$(eval `resize` && whiptail \
 		--notags \
