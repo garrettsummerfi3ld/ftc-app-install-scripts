@@ -1,5 +1,7 @@
 curl
 software-properties-common
+unzip
 wget
 whiptail
 xterm
+zip
