@@ -1,11 +1,3 @@
 #!/bin/bash
 
-# GitKrakem
-function install_gitkraken {
-	# Variables
-	NAME="GitKraken"
-	PACKAGE="gitkraken-amd64"
-	REMOTE="https://release.gitkraken.com/linux/gitkraken-amd64.deb"
-	#Download and install remote package
-	install_remote_package $NAME $PACKAGE $REMOTE install_thirdparty
-}
+echo_message info Comming soon...
