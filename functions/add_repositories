@@ -9,7 +9,7 @@
 # ${5} = return_function
 
 function add_apt_repo() {
-	echo_message header "Starting 'add_apt_repo' function"
+	echo_message header "Starting 'add_apt_repo' function..."
 	# Check if already added
 	if ! grep -q "${3}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 		# draw window
@@ -45,7 +45,7 @@ function add_apt_repo() {
 # ${2} = https://remote.example.com/
 
 function add_flatpak_repo() {
-	echo_message header "Starting 'add_flatpak_repo' function"
+	echo_message header "Starting 'add_flatpak_repo' function..."
 	# Check if already added
 	flatpak remotes | grep ${1} &> /dev/null
 	# If repo is added
@@ -67,7 +67,7 @@ function add_flatpak_repo() {
 # ${2} = launchpad-user/ppa-name
 
 function add_launchpad_ppa() {
-	echo_message header "Starting 'add_launchpad_ppa' function"
+	echo_message header "Starting 'add_launchpad_ppa' function..."
 	# Check if PPA already added
 	if ! grep -q "^deb .*${2}" /etc/apt/sources.list /etc/apt/sources.list.d/*; then
 		# draw window

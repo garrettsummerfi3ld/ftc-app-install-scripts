@@ -25,19 +25,19 @@ function install_snap_apps {
 		case "${SNAPS}" in
 			install_snap_android_studio)
 				# install Android Studio
-				install_snap_package "Android Studio" "android-studio" install_snap_apps
+				install_snap_package "Android Studio" "android-studio --classic" install_snap_apps
 				;;
 			install_snap_atom)
 				# install Atom text editor
-				install_snap_package "Atom" "atom" install_snap_apps
+				install_snap_package "Atom" "atom --classic" install_snap_apps
 				;;
 			install_snap_gitkraken)
 				# install GitKraken
-				install_snap_package "GitKraken" "GitKraken" install_snap_apps
+				install_snap_package "GitKraken" "gitkraken --classic" install_snap_apps
 				;;
 			install_snap_intellij)
 				# install IntelliJ IDEA
-				install_snap_package "IntelliJ" "intellij-idea-community" install_snap_apps
+				install_snap_package "IntelliJ" "intellij-idea-community --classic" install_snap_apps
 				;;
 			install_snap_slack)
 				# install Slack
