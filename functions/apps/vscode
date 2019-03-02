@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Visual Studio Code
+function install_vscode {
+	# Variables
+	NAME="Visual Studio Code"
+	PACKAGE="code.deb"
+	REMOTE="http://go.microsoft.com/fwlink/?LinkID=760868"
+
+	# Start
+	echo_message header 'Begin '$NAME' installation...'
+
+	# Download
+	echo_message info 'Downloading package '$PACKAGE'...'
+	curl -O $PACKAGE -L $REMOTE
+
+	# Install
+		echo_message info "Installing '$NAME' package..."
+		superuser_do "dpkg -i ${PACKAGE}*.deb"
+		# Install depencies, if any
+		echo_message info "Correcting any dependency errors..."
+		superuser_do "apt install -fy"
+		# Cleanup and finish
+		rm ${PACKAGE}*.deb
+		# Done
+		echo_message success "Installation of ${NAME} complete."
+		whiptail --title "Finished" --msgbox "Installation of ${NAME} complete." 8 56
+	else
+		# Already installed
+		echo_message info "${NAME} already installed."
+		whiptail --title "Finished" --msgbox "${NAME} is already installed." 8 56
+	fi
+}

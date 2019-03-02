@@ -1,3 +1,52 @@
 #!/bin/bash
 
-echo_message info Comming soon...
+# Install IntelliJ from zip file
+function install_intellij {
+	NAME="IntelliJ"
+	TARBALL=ideaIC-2018.3.5
+	CHECKSUM=bf756e44b90544e7b991bae325e5da13508d389df35daa7f856e0b56551ea860
+	
+	# Start
+	echo_message header 'Begin '$NAME' installation...'
+	
+	# Download
+	echo_message info 'Downloading zip file '$TARBALL'...'
+	curl -O https://download.jetbrains.com/idea/${TARBALL}.tar.gz
+	
+	# Verify download via sha256sum
+	echo_message info 'Verifying download using SHA-256...'
+	sha256sum ${TARBALL}.tar.gz | grep $CHECKSUM &> /dev/null
+	EXITSTATUS=$?
+	
+	# Handling of verification
+	# Checksum failure
+	if [ $EXITSTATUS = 1]; then
+		echo_message error 'Error: checksums do not match. Aborting...'
+		whiptail --title "Error" --msgbox "Verification of $NAME download failed." 8 56
+		rm ${TARBALL}.tar.gz
+		thirdparty
+	# Checksum success
+	else
+		# If checksum succeeds
+		echo_message success "Checksums look good. Proceeding..."
+		
+		# Unpack TARBALL
+		echo_message info 'Unpacking '$NAME' archive...'
+		mkdir intellij-idea && tar -xf $TARBALL*.tar.gz -C intellij-idea --strip-components 1
+		
+		# Moving package to /opt/ folder
+		echo_message info 'Moving package to /opt/ folder...'
+		superuser_do "mv intellij-idea /opt/"
+		cd /opt/intellij-idea/bin
+
+		# Run install script
+		echo_message info 'Running install script...'
+		echo_message warning 'This will require user input!'
+		nohup ./idea.sh &
+
+		# Cleanup and finish
+		echo_message success "Installation of '$TARBALL' complete."
+		whiptail --title "Finished" --msgbox "Installation of $NAME complete." 8 56
+		thirdparty
+		fi
+}
