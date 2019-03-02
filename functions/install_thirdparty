@@ -31,12 +31,12 @@ function install_thirdparty {
 		--cancel-button "Go Back" \
 		$LINES $COLUMNS $(( $LINES - 12 )) \
 		'install_android_studio''Android Studio' \
-		'install_atom'			'Atom' \
+		'install_atom'          'Atom' \
 		'install_chrome'        'Google Chrome' \
 		'install_dropbox'       'Dropbox' \
-		'install_gitkraken'		'GitKraken' \
-		'install_intellij'		'IntelliJ' \
-		'install_vscode'		'Visual Studio Code' \
+		'install_gitkraken'     'GitKraken' \
+		'install_intellij'      'IntelliJ' \
+		'install_vscode'        'Visual Studio Code' \
 		3>&1 1>&2 2>&3)
 
 	# check exit status
