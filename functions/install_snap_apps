@@ -33,7 +33,7 @@ function install_snap_apps {
 				;;
 			install_snap_gitkraken)
 				# install GitKraken git client
-				install_snap_package "GitKraken" "gitkraken --classic" install_snap_apps
+				install_snap_package "GitKraken" "gitkraken" install_snap_apps
 				;;
 			install_snap_intellij)
 				# install IntelliJ IDE
