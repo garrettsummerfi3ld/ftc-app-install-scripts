@@ -18,6 +18,11 @@ function install_favs_utils {
 	install_from_list "preferred utilities" "favs-utils" main
 }
 
+# Install miscellaneous packages
+{
+	install_from_list "perferred miscellaneous" "favs-misc" main
+}
+
 # Install codecs
 function install_codecs {
 	install_package "multimedia codecs" "ubuntu-restricted-extras" main

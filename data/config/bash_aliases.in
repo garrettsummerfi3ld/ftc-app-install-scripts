@@ -17,5 +17,3 @@ alias rm='rm -i'
 # human readable df
 alias df='df -h'
 
-# ignore common typos
-alias naon='nano'
